@@ -1,12 +1,16 @@
-import pg from 'pg'
-const { Pool } = pg
+import pg from 'pg';
+const dotenv = require('dotenv');
+
+dotenv.config();
+
+const { Pool } = pg;
 
 const pool = new Pool({
-    user: "postgres",
-    password: "UJ5AmoDHsmPhzC8",
-    host: "localhost",
-    port: 5432,
-    database: "pernsheets"
-})
+    user: process.env.PG_USER,
+    password: process.env.PG_PASSWORD,
+    host: process.env.PG_HOST,
+    port:  5432,
+    database: process.env.PG_DATABASE
+});
 
-export default pool 
+export default pool;
