@@ -7,21 +7,29 @@ import SheetModal from "./components/SheetModal";
 import ListSheets from "./components/ListSheets";
 
 const App: React.FC = () => {
-	const [isModalOpen, setIsModalOpen] = useState<boolean>(false); //change to Zustand
+	const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+	const [selectedSheet, setSelectedSheet] = useState<any>(null);
 
-	const openModal = () => {
+	// Open modal and set the selected sheet
+	const openModal = (sheet: any) => {
+		setSelectedSheet(sheet);
 		setIsModalOpen(true);
 	};
 
 	const closeModal = () => {
 		setIsModalOpen(false);
+		setSelectedSheet(null);
 	};
 
 	return (
 		<div>
-			<ListSheets />
-			<AddSheetModal onClick={() => openModal()} />
-			<SheetModal isOpen={isModalOpen} onClose={closeModal} />
+			<AddSheetModal onClick={() => openModal(null)} />
+			<ListSheets onSelectSheet={openModal} />
+			<SheetModal
+				isOpen={isModalOpen}
+				onClose={closeModal}
+				sheet={selectedSheet}
+			/>
 		</div>
 	);
 };
