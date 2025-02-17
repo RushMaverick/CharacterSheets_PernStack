@@ -33,6 +33,13 @@ const SheetModal: React.FC<ModalProperties> = ({ isOpen, onClose, sheet }) => {
 			setLevel(sheet.level);
 			setBg(sheet.background);
 			setBio(sheet.bio);
+		} else {
+			setName("");
+			setRace("");
+			setClass("");
+			setLevel(1);
+			setBg("");
+			setBio("");
 		}
 	}, [sheet]);
 
@@ -73,7 +80,7 @@ const SheetModal: React.FC<ModalProperties> = ({ isOpen, onClose, sheet }) => {
 							type="text"
 							onChange={(e) => setName(e.target.value)}
 							placeholder="For example: Elrouvir Lightshiver"
-							value={c_name} //THIS DOES NOT UPDATE
+							value={c_name}
 						/>
 					</label>
 					<label>

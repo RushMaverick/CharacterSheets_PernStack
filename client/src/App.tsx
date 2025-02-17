@@ -18,6 +18,7 @@ const App: React.FC = () => {
 
 	const closeModal = () => {
 		setIsModalOpen(false);
+		setSelectedSheet([]);
 		setSelectedSheet(null);
 	};
 

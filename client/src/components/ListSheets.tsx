@@ -32,9 +32,6 @@ const ListSheets: React.FC<ListSheetsProps> = ({ onSelectSheet }) => {
 				setSelectedSheet(sheet);
 				onSelectSheet(sheet);
 				console.log(sheet);
-			} else {
-				setSelectedSheet(null);
-				onSelectSheet(undefined);
 			}
 		} catch (err) {
 			console.error(err instanceof Error);
