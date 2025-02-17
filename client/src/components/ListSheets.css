@@ -1,0 +1,42 @@
+.sheet-view {
+	display: flex;
+	flex-direction: column; /* Stack labels vertically */
+	gap: 10px; /* Space between each label */
+	margin-left: 2rem;
+  }
+  
+.label-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #e0e0e0;
+    border: 1px solid #ccc;
+    padding: 8px 12px;
+    font-size: 14px;
+    color: #333;
+    border-radius: 4px;
+    width: 250px;
+	height: 42px;
+}
+
+.label-container:hover{
+	background-color: grey;
+}
+
+.label-text {
+    flex-grow: 1; 
+	font-weight: bold;
+}
+
+.delete-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+	margin-right: 2px;
+    color: red;
+}
+
+.delete-btn:hover {
+    color: darkred;
+}
