@@ -65,16 +65,15 @@ app.get("/sheets/:id", async (req: Request, res: Response) => {
 	}
 });
 
-//update a sheet
+//Dynamically update the sheet if there are multiple changes.
 app.put("/sheets/:id", async (req: Request, res: Response) => {
 	try {
 		const { id } = req.params;
 		const { character_name, character_class, level, race, background, bio } = req.body;
 
-		// Build the SET clause dynamically based on provided fields
 		const updates: string[] = [];
 		const values: any[] = [];
-		let paramCount = 1;
+		let paramCount : number = 1;
 
 		if (character_name !== undefined) {
 			updates.push(`character_name = $${paramCount}`);
