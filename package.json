@@ -1,0 +1,27 @@
+{
+  "name": "charactersheets_pernstack",
+  "version": "1.0.0",
+  "description": "README TBA Q1 2025",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "concurrently \"npm run server --prefix server\" \"npm run client --prefix client\"",
+    "server": "npm start --prefix server",
+    "client": "npm start --prefix client"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RushMaverick/CharacterSheets_PernStack.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RushMaverick/CharacterSheets_PernStack/issues"
+  },
+  "homepage": "https://github.com/RushMaverick/CharacterSheets_PernStack#readme",
+  "devDependencies": {
+    "concurrently": "^9.1.2",
+    "ts-node": "^10.9.2"
+  }
+}
