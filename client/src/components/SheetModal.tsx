@@ -1,21 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./SheetModal.css";
 
 interface ModalProperties {
 	isOpen: boolean;
 	onClose: () => void;
+	sheet: any;
 }
 
-interface CharacterSheetData {
-	c_name: string;
-	c_race: string;
-	c_class: string;
-	c_level: number;
-	c_bg: string;
-	c_bio: string;
-}
+// interface CharacterSheetData {
+// 	c_name: string;
+// 	c_race: string;
+// 	c_class: string;
+// 	c_level: number;
+// 	c_bg: string;
+// 	c_bio: string;
+// }
 
-const SheetModal: React.FC<ModalProperties> = ({ isOpen, onClose }) => {
+const SheetModal: React.FC<ModalProperties> = ({ isOpen, onClose, sheet }) => {
 	//States
 	const [c_name, setName] = useState("");
 	const [c_race, setRace] = useState("");
@@ -24,7 +25,19 @@ const SheetModal: React.FC<ModalProperties> = ({ isOpen, onClose }) => {
 	const [c_bg, setBg] = useState("");
 	const [c_bio, setBio] = useState("");
 
+	useEffect(() => {
+		if (sheet) {
+			setName(sheet.character_name);
+			setRace(sheet.race);
+			setClass(sheet.character_class);
+			setLevel(sheet.level);
+			setBg(sheet.background);
+			setBio(sheet.bio);
+		}
+	}, [sheet]);
+
 	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+		// Submit does not yet update the character fields, creates a new sheet
 		e.preventDefault();
 		try {
 			const body = {
@@ -34,15 +47,14 @@ const SheetModal: React.FC<ModalProperties> = ({ isOpen, onClose }) => {
 				level: c_level,
 				background: c_bg,
 				bio: c_bio,
-			}; // Figure out how to place these in the correct spots
-			console.log("body is: ", body);
+			};
 			const response = await fetch("http://localhost:5001/sheets", {
 				method: "POST",
 				headers: { "Content-Type": "application/json" },
 				body: JSON.stringify(body),
 			});
-			const data = await response.json();
-			console.log("Character sheet saved in Frontend.", data);
+
+			window.location.href = "/";
 		} catch (err) {
 			console.error(err instanceof Error);
 		}
@@ -60,7 +72,8 @@ const SheetModal: React.FC<ModalProperties> = ({ isOpen, onClose }) => {
 						<input
 							type="text"
 							onChange={(e) => setName(e.target.value)}
-							placeholder="Elrouvir Lightshiver"
+							placeholder="For example: Elrouvir Lightshiver"
+							value={c_name} //THIS DOES NOT UPDATE
 						/>
 					</label>
 					<label>
@@ -68,7 +81,8 @@ const SheetModal: React.FC<ModalProperties> = ({ isOpen, onClose }) => {
 						<input
 							type="text"
 							onChange={(e) => setRace(e.target.value)}
-							placeholder="Fire Genasi"
+							placeholder="For example: Fire Genasi"
+							value={c_race}
 						/>
 					</label>
 					<label>
@@ -76,7 +90,8 @@ const SheetModal: React.FC<ModalProperties> = ({ isOpen, onClose }) => {
 						<input
 							type="text"
 							onChange={(e) => setClass(e.target.value)}
-							placeholder="Artificer"
+							placeholder="For example: Artificer"
+							value={c_class}
 						/>
 					</label>
 					<label>
@@ -88,6 +103,7 @@ const SheetModal: React.FC<ModalProperties> = ({ isOpen, onClose }) => {
 								setLevel(value);
 							}}
 							placeholder="3"
+							value={c_level}
 						/>
 					</label>
 					<label>
@@ -95,7 +111,8 @@ const SheetModal: React.FC<ModalProperties> = ({ isOpen, onClose }) => {
 						<input
 							type="text"
 							onChange={(e) => setBg(e.target.value)}
-							placeholder="Street Urchin"
+							placeholder="For example: Noble"
+							value={c_bg}
 						/>
 					</label>
 					<label>
@@ -103,7 +120,8 @@ const SheetModal: React.FC<ModalProperties> = ({ isOpen, onClose }) => {
 						<textarea
 							className="bio-area"
 							onChange={(e) => setBio(e.target.value)}
-							placeholder="Blablablablabla"
+							placeholder="Write your interesting backstory here!"
+							value={c_bio}
 						/>
 					</label>
 					<div className="modal-buttons">
