@@ -5,8 +5,8 @@ import pool from "./db.js";
 const app = express();
 
 //Middleware
-app.use(cors());
 app.use(express.json());
+app.use(cors());
 
 //Routes
 
@@ -25,15 +25,15 @@ app.post("/sheets", async (req: Request, res: Response) => {
 	try {
 		const {
 			character_name,
+			race,
 			character_class,
 			level,
-			race,
 			background,
 			bio
 		} = req.body;
 		const newSheet = await pool.query(
-			"INSERT INTO sheet (character_name, character_class, level, race, background, bio) VALUES($1, $2, $3, $4, $5, $6) RETURNING *",
-			[character_name, character_class, level, race, background, bio]
+			"INSERT INTO sheet (character_name, race, character_class, level, background, bio) VALUES($1, $2, $3, $4, $5, $6) RETURNING *",
+			[character_name, race, character_class, level, background, bio]
 		);
 		res.json(newSheet.rows[0]);
 	} catch (err) {
