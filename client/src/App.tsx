@@ -10,7 +10,6 @@ const App: React.FC = () => {
 	const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 	const [selectedSheet, setSelectedSheet] = useState<any>(null);
 
-	// Open modal and set the selected sheet
 	const openModal = (sheet: any) => {
 		setSelectedSheet(sheet);
 		setIsModalOpen(true);
@@ -18,8 +17,7 @@ const App: React.FC = () => {
 
 	const closeModal = () => {
 		setIsModalOpen(false);
-		setSelectedSheet([]);
-		setSelectedSheet(null);
+		setSelectedSheet("");
 	};
 
 	return (
