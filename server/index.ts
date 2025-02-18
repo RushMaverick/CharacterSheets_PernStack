@@ -8,7 +8,6 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-//Routes
 
 interface Sheet {
 	sheet_id: number;
@@ -19,6 +18,8 @@ interface Sheet {
 	background: string;
 	bio: string;
 }
+
+//Routes
 
 //create sheet
 app.post("/sheets", async (req: Request, res: Response) => {
