@@ -1,30 +1,31 @@
-
 # Tabletop RPG Character Sheet Creator
 
-This is a demo of a Character Sheet Creator made using the PERN stack. 
+This is a demo of a Character Sheet Creator made using the PERN stack.
 
 In this demo, users can create sheets for their characters by inputting text into the fields and then saving them. Their created sheet will appear in the list view.
 
 By clicking the existing sheets, the user can edit the sheet and modify their information.
 
-Very simple and clean. 
-
+Very simple and clean.
 
 ## Deployment
 
-To deploy this project you need Postgresql, Node.js and npm installed. 
+To deploy this project you need Postgresql, Node.js and npm installed.
 
 Once that is done, navigate to the project folder and run
+
 ```bash
   make
 ```
+
 to install any and all required dependencies.
 This will compile the client and serverside so they are ready for action!
 
-
 #### IMPORTANT SERVER INFORMATION
+
 The server will require you to create a database and connecting to said database.
 Provided with the project is a database.sql (root/server/database.sql) file with commands that you can run in the Postgresql environment to initiate the database. A great tutorial on how to go about [is found here](https://neon.tech/postgresql/postgresql-getting-started/install-postgresql).
+
 #### END OF IMPORTANT SERVER INFORMATION
 
 Once you have done that, proceed by creating an .env file in (root/server). Done?
@@ -37,6 +38,7 @@ Then enter the following:
     PG_HOST=localhost
     PG_DATABASE=pernsheets
 ```
+
 and be sure to change the variables to match you Postgresql superuser username and password!
 
 All good? Great! I hope you have your database set up and you are feeling comfortable.
@@ -47,7 +49,8 @@ Now proceed by running the following command in root
   npm run dev
 ```
 
-This will start both the server- and clientside. Happy character creation! 
+This will start both the server- and clientside. Happy character creation!
+
 ## Tools Used
 
 Disclaimer: I looked into libraries like Zustand, but ran into quite a debacle refactoring the code. Will take another look!
@@ -56,3 +59,6 @@ Disclaimer: I looked into libraries like Zustand, but ran into quite a debacle r
 - Express
 - React
 - Node.js (npm)
+
+One branch, one dream.
+Push straight to main and never look back.

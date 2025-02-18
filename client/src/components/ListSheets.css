@@ -1,7 +1,7 @@
 .sheet-view {
 	display: flex;
-	flex-direction: column; /* Stack labels vertically */
-	gap: 10px; /* Space between each label */
+	flex-direction: column;
+	gap: 10px;
 	margin-left: 2rem;
   }
   

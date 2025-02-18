@@ -1,3 +1,15 @@
+/**
+ * SheetModal Component
+ *
+ * This component serves as a modal for creating or editing a character sheet.
+ * It allows users to input character details such as name, race, class, level, background, and bio.
+ *
+ * Features:
+ * - Opens as a modal when `isOpen` is true.
+ * - Pre-fills fields if an existing `sheet` is provided.
+ * - Sends a POST request for new characters and a PUT request for updates.
+ * - Closes when clicking outside the modal or pressing the "Cancel" button.
+ */
 import React, { useState, useEffect } from "react";
 import "./SheetModal.css";
 

@@ -1,3 +1,14 @@
+/**
+ * ListSheets Component
+ *
+ * This component lists all the existing entries from the database to the frontend.
+ *
+ * Features:
+ * - Lists all backend entries to the page.
+ * - Backend items are represented as labels, showing the name of the sheet as well as a delete button.
+ * - Delete button deletes the entry from the backend and thus refreshes the view.
+ */
+
 import React, { useEffect, useState, useCallback } from "react";
 import "./ListSheets.css";
 import SheetModal from "./SheetModal";
@@ -22,6 +33,7 @@ const ListSheets: React.FC<ListSheetsProps> = ({ onSelectSheet }) => {
 		null
 	);
 
+	//OpenModal sets the selected sheet property to the sheet that is clicked on.
 	const OpenModal = async (
 		event: React.MouseEvent,
 		sheet: CharacterSheetData
