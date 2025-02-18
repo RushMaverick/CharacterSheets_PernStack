@@ -60,5 +60,8 @@ Disclaimer: I looked into libraries like Zustand, but ran into quite a debacle r
 - React
 - Node.js (npm)
 
+This project is based off of a To Do List project at:
+https://youtu.be/ldYcgPKEZC8
+
 One branch, one dream.
 Push straight to main and never look back.
