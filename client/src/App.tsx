@@ -18,17 +18,28 @@ import AddSheetModal from "./components/AddSheetModal";
 import SheetModal from "./components/SheetModal";
 import ListSheets from "./components/ListSheets";
 
+interface CharacterSheetData {
+	sheet_id: number;
+	character_name: string;
+	race: string;
+	character_class: string;
+	level: number;
+	background: string;
+	bio: string;
+}
+
 const App: React.FC = () => {
 	const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-	const [selectedSheet, setSelectedSheet] = useState<any>(null);
-
+	const [selectedSheet, setSelectedSheet] = useState<CharacterSheetData | null>(
+		null
+	);
 	const openModal = (sheet: any) => {
 		setSelectedSheet(sheet);
 		setIsModalOpen(true);
 	};
 
 	const closeModal = () => {
-		setSelectedSheet("");
+		setSelectedSheet(null);
 		setIsModalOpen(false);
 	};
 
