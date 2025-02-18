@@ -13,7 +13,7 @@ interface CharacterSheetData {
 }
 
 interface ListSheetsProps {
-	onSelectSheet: (sheet: CharacterSheetData | undefined) => void; // Function passed from App to open modal with sheet
+	onSelectSheet: (sheet: CharacterSheetData | undefined) => void;
 }
 
 const ListSheets: React.FC<ListSheetsProps> = ({ onSelectSheet }) => {
@@ -27,11 +27,10 @@ const ListSheets: React.FC<ListSheetsProps> = ({ onSelectSheet }) => {
 		sheet: CharacterSheetData
 	) => {
 		try {
-			const targetClicked = event.target as HTMLElement; // Does not empty out the sheet
+			const targetClicked = event.target as HTMLElement;
 			if (targetClicked.classList.contains("label-container")) {
 				setSelectedSheet(sheet);
 				onSelectSheet(sheet);
-				console.log(sheet);
 			}
 		} catch (err) {
 			console.error(err instanceof Error);
@@ -50,13 +49,13 @@ const ListSheets: React.FC<ListSheetsProps> = ({ onSelectSheet }) => {
 		}
 	};
 
+	//Get all sheets func
 	const getSheets = useCallback(async () => {
 		try {
 			const response = await fetch("http://localhost:5001/sheets");
 			const jsonData: CharacterSheetData[] = await response.json();
 
 			setSheets(jsonData);
-			console.log(jsonData);
 		} catch (err) {
 			console.error(err instanceof Error);
 		}
