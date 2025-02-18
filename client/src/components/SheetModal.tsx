@@ -7,15 +7,6 @@ interface ModalProperties {
 	sheet: any;
 }
 
-// interface CharacterSheetData {
-// 	c_name: string;
-// 	c_race: string;
-// 	c_class: string;
-// 	c_level: number;
-// 	c_bg: string;
-// 	c_bio: string;
-// }
-
 const SheetModal: React.FC<ModalProperties> = ({ isOpen, onClose, sheet }) => {
 	//States
 	const [c_name, setName] = useState("");
@@ -25,6 +16,7 @@ const SheetModal: React.FC<ModalProperties> = ({ isOpen, onClose, sheet }) => {
 	const [c_bg, setBg] = useState("");
 	const [c_bio, setBio] = useState("");
 
+	// useEffect will update the modal with information if there is any, otherwise set them to default values
 	useEffect(() => {
 		if (sheet) {
 			setName(sheet.character_name);
@@ -43,8 +35,8 @@ const SheetModal: React.FC<ModalProperties> = ({ isOpen, onClose, sheet }) => {
 		}
 	}, [sheet]);
 
+	//handleSubmit recognizes if there is existing sheet information and then either uses POST or PUT depending on the instance the submit was handled!
 	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-		// Submit does not yet update the character fields, creates a new sheet
 		e.preventDefault();
 		try {
 			const body = {
@@ -55,11 +47,22 @@ const SheetModal: React.FC<ModalProperties> = ({ isOpen, onClose, sheet }) => {
 				background: c_bg,
 				bio: c_bio,
 			};
-			const response = await fetch("http://localhost:5001/sheets", {
-				method: "POST",
-				headers: { "Content-Type": "application/json" },
-				body: JSON.stringify(body),
-			});
+			if (sheet) {
+				const response = await fetch(
+					`http://localhost:5001/sheets/${sheet.sheet_id}`,
+					{
+						method: "PUT",
+						headers: { "Content-Type": "application/json" },
+						body: JSON.stringify(body),
+					}
+				);
+			} else {
+				const response = await fetch("http://localhost:5001/sheets", {
+					method: "POST",
+					headers: { "Content-Type": "application/json" },
+					body: JSON.stringify(body),
+				});
+			}
 
 			window.location.href = "/";
 		} catch (err) {
