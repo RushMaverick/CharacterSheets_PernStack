@@ -16,18 +16,9 @@ To deploy this project you need Postgresql, Node.js and npm installed.
 
 Once that is done, navigate to the project folder and run
 ```bash
-  npm run install
-```
-followed by
-```bash
-  npm run install:all
+  make
 ```
 to install any and all required dependencies.
-
-After this you will need to run
-```bash
-  npm run build:all
-```
 This will compile the client and serverside so they are ready for action!
 
 
@@ -36,7 +27,8 @@ The server will require you to create a database and connecting to said database
 Provided with the project is a database.sql (root/server/database.sql) file with commands that you can run in the Postgresql environment to initiate the database. A great tutorial on how to go about [is found here](https://neon.tech/postgresql/postgresql-getting-started/install-postgresql).
 #### END OF IMPORTANT SERVER INFORMATION
 
-Once you have done that, proceed by creating an .env file in (root/server) 
+Once you have done that, proceed by creating an .env file in (root/server). Done?
+Then enter the following:
 
 ```bash
     # Database Configuration
@@ -45,6 +37,7 @@ Once you have done that, proceed by creating an .env file in (root/server)
     PG_HOST=localhost
     PG_DATABASE=pernsheets
 ```
+and be sure to change the variables to match you Postgresql superuser username and password!
 
 All good? Great! I hope you have your database set up and you are feeling comfortable.
 
